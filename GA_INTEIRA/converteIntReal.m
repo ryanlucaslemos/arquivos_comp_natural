@@ -4,6 +4,6 @@ function POPreais = converteIntReal(xmax, xmin, POPint, numBits)
     POPreais = zeros(tamPOP, 1);
     fator = (2^numBits)-1;
     for i=1:tamPOP
-        POPreais(i) = (xmin + POPint(i) * delta) / fator;
+        POPreais(i) = xmin + POPint(i) * (delta / fator);
     end
 end
