@@ -7,16 +7,17 @@ xmax = 5;
 tamPOP = 20;
 numVAR = 1;
 numGER = 500;
-numBits = 10;
+numBits = 20;
 POP = round(rand(tamPOP, numVAR*numBits));
-inteiros = converteBinInt(POP);
-FX = calcularFX(converteIntReal(xmax, xmin, inteiros, numBits));
+%inteiros = converteBinInt(POP);
+FX = calcularFX(converteBinReal(POP, xmax, xmin, numVAR));
 for i = 1:numGER
     %progresso = i / numGER;
     POPnovo = variacaoBin(POP);
-    FXnovo  = calcularFX(converteBinReal(POPnovo, xmax, xmin, numBits));
+    FXnovo  = calcularFX(converteBinReal(POPnovo, xmax, xmin, numVAR));
     POP = [POP;POPnovo];
     FX = [FX; FXnovo];
+    [POP, FX] = selecao(POP,FX,tamPOP);
 end
 
-
+min(FX)
