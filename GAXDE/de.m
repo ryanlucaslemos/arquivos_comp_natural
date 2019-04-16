@@ -1,17 +1,4 @@
-clear vars; %limpa variaveis
-close all; %fecha todas as figuras
-clc; %limpa a tela
-xmin = -5;
-xmax = 5;
-tamPOP = 20;
-numVAR = 2;
-numGER = 500;
-maxFX = 100000;
-POP = xmin+rand(tamPOP, numVAR) * (xmax-xmin);
-FX = calcularFX(POP);
-numFX = tamPOP;
-
-while(numFX < maxFX)
+function [POP,FX, numFX] = de(POP,FX, tamPOP, numFX, numVAR)
     for i=1:tamPOP
         R=randperm(tamPOP, 3);
         pNOVO = POP(R(1),:)+rand*(POP(R(2),:)-POP(R(3),:));
@@ -30,4 +17,3 @@ while(numFX < maxFX)
         end
     end
 end
-min(FX)
